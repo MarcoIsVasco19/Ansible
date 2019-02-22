@@ -1,6 +1,6 @@
 ---
-# Usage --> ansible-playbook Install_vSDE.yaml --extra-vars "username=<username_here> password=<pwd_here>"
-  - hosts: sde
+# Usage --> ansible-playbook Install_vPTS.yaml --extra-vars "username=<username_here> password=<pwd_here>"
+  - hosts: pts
     remote_user: root
     become: yes
     tasks:
@@ -43,7 +43,7 @@
           chdir: /opt/
 
       # Once downloaded and installed lets install the certs
-      - name: install certs/sde repo
+      - name: install certs/pts repo
         expect:
           command: svrepo
           echo: yes
@@ -51,22 +51,22 @@
             'Download and install now? [n]|y:': 'y'
             'Email Address:': "{{ username }}"
             'Password     :': "{{ password }}"
-            'Enter quit/1-15:': '10'
-            'Enter quit/1-3:': '1'
-            '7.70.05_2': '58'
+            'Enter quit/1-15:': '8'
+            'Enter quit/1-3:': '3'
+            'Enter quit/1-1': '1'
             'Run': 'y'
         no_log: true
 
-      - name: install sde packages
+      - name: install pts packages
         yum:
-          name: sde
+          name: svpts
           state: present
         notify:
-        - restart SDE service for good measure
+        - restart pts service for good measure
       handlers:
-      - name: restart SDE service for good measure
+      - name: restart pts service for good measure
         service:
-          name: sde
+          name: svpts
           enabled: yes
           state: restarted
 
@@ -89,10 +89,10 @@
       #       shell: rpm -Uvh openssl-perl-1.0.2k-16.el7.x86_64.rpm
       #       args:
       #         chdir: /opt/
-      # - name: Try install Sde Again! No More errors :)
+      # - name: Try install pts Again! No More errors :)
       #   yum:
-      #     name: sde
+      #     name: pts
       #     state: present
       # - name: Restart services
-      #   command: service sde restart
+      #   command: service pts restart
       #   register: output
