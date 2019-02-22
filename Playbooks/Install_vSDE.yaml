@@ -1,6 +1,6 @@
 ---
 # Usage --> 
-  - hosts: awsec2
+  - hosts: sde
     remote_user: root
     become: yes
     tasks:
