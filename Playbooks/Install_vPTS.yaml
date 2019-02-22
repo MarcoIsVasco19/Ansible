@@ -63,7 +63,7 @@
           state: present
         notify:
         - restart pts service for good measure
-      handlers:
+    handlers:
       - name: restart pts service for good measure
         service:
           name: svpts

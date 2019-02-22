@@ -9,10 +9,10 @@
           state: disabled
 
     #First Update Yum and install dependencies for what we need (disabled for now)
-      - name: upgrade all packages
-        yum:
-          name: '*'
-          state: latest
+      # - name: upgrade all packages
+      #   yum:
+      #     name: '*'
+      #     state: latest
       - name: install epel
         yum:
           name: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm"
@@ -63,36 +63,37 @@
           state: present
         notify:
         - restart sde
+
+        rescue:
+          - debug:
+              msg: "There was an issue installing so lets try install openssl and perl-WWW-curl"
+          - name: Installing perl-WWW-curl
+            get_url:
+              url: http://mirror.centos.org/centos/7/os/x86_64/Packages/perl-WWW-Curl-4.15-13.el7.x86_64.rpm
+              dest: /opt/perl-WWW-Curl-4.15-13.el7.x86_64.rpm
+          - name: Install the package perl-WWW-curl
+            shell: rpm -Uvh perl-WWW-Curl-4.15-13.el7.x86_64.rpm
+            args:
+              chdir: /opt/
+          - name: Installing openssl-perl due to above failure
+            get_url:
+              url: http://mirror.centos.org/centos/7/os/x86_64/Packages/openssl-perl-1.0.2k-16.el7.x86_64.rpm
+              dest: /opt/openssl-perl-1.0.2k-16.el7.x86_64.rpm
+          - name: Install the package openssl-perl
+            shell: rpm -Uvh openssl-perl-1.0.2k-16.el7.x86_64.rpm
+            args:
+              chdir: /opt/
+      - name: Try install Sde Again! No More errors :)
+        yum:
+          name: sde
+          state: present
+      - name: Restart services
+        command: service sde restart
+        register: output
+
     handlers:
       - name: restart sde
         service:
           name: sde
           enabled: yes
           state: restarted
-
-      #   rescue:
-      #     - debug:
-      #         msg: "There was an issue installing so lets try install openssl and perl-WWW-curl"
-      #     - name: Installing perl-WWW-curl
-      #       get_url:
-      #         url: http://mirror.centos.org/centos/7/os/x86_64/Packages/perl-WWW-Curl-4.15-13.el7.x86_64.rpm
-      #         dest: /opt/perl-WWW-Curl-4.15-13.el7.x86_64.rpm
-      #     - name: Install the package perl-WWW-curl
-      #       shell: rpm -Uvh perl-WWW-Curl-4.15-13.el7.x86_64.rpm
-      #       args:
-      #         chdir: /opt/
-      #     - name: Installing openssl-perl due to above failure
-      #       get_url:
-      #         url: http://mirror.centos.org/centos/7/os/x86_64/Packages/openssl-perl-1.0.2k-16.el7.x86_64.rpm
-      #         dest: /opt/openssl-perl-1.0.2k-16.el7.x86_64.rpm
-      #     - name: Install the package openssl-perl
-      #       shell: rpm -Uvh openssl-perl-1.0.2k-16.el7.x86_64.rpm
-      #       args:
-      #         chdir: /opt/
-      # - name: Try install Sde Again! No More errors :)
-      #   yum:
-      #     name: sde
-      #     state: present
-      # - name: Restart services
-      #   command: service sde restart
-      #   register: output
