@@ -62,9 +62,6 @@
           - yum:
               name: sde
               state: present
-        notify:
-        - restart sde
-
         rescue:
           - debug:
               msg: "There was an issue installing so lets try install openssl and perl-WWW-curl"
