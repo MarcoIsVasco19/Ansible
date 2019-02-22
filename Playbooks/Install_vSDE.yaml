@@ -13,6 +13,10 @@
       #   yum:
       #     name: '*'
       #     state: latest
+      - name: install createrepo (for svbootstrap)
+        yum:
+          name: createrepo
+          state: present      
       - name: install epel
         yum:
           name: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm"
@@ -33,14 +37,14 @@
         pip:
           name: pexpect
         become: yes    
-      # - name: Download svbootstrap
-      #   get_url:
-      #     url: https://files.support.sandvine.com/public/svbootstrap/svbootstrap.el7.x86_64.rpm
-      #     dest: /opt/svbootstrap.el7.x86_64.rpm
-      # - name: Install svbootstrap
-      #   shell: rpm -Uvh svbootstrap.el7.x86_64.rpm
-      #   args:
-      #     chdir: /opt/
+      - name: Download svbootstrap
+        get_url:
+          url: https://files.support.sandvine.com/public/svbootstrap/svbootstrap.el7.x86_64.rpm
+          dest: /opt/svbootstrap.el7.x86_64.rpm
+      - name: Install svbootstrap
+        shell: rpm -Fvh svbootstrap.el7.x86_64.rpm
+        args:
+          chdir: /opt/
 
       # Once downloaded and installed lets install the certs
       - name: install certs/sde repo
