@@ -62,9 +62,9 @@
           name: sde
           state: present
         notify:
-        - restart sde
+        - restart SDE service for good measure
       handlers:
-      - name: restart sde
+      - name: restart SDE service for good measure
         service:
           name: sde
           enabled: yes
