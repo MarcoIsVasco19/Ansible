@@ -63,7 +63,7 @@
           state: present
         notify:
         - restart sde
-      handlers:
+    handlers:
       - name: restart sde
         service:
           name: sde
