@@ -65,10 +65,8 @@
         - restart pts service for good measure
     handlers:
       - name: restart pts service for good measure
-        service:
-          name: svpts
-          enabled: yes
-          state: restarted
+          command: svreload
+          register: output
 
       #   rescue:
       #     - debug:
