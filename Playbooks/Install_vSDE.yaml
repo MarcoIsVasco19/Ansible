@@ -1,5 +1,5 @@
 ---
-# Usage --> ansible-playbook Install_vSDE.yaml --extra-vars "username=marco.marques@three6five.com password=SD1eg01992"
+# Usage --> ansible-playbook Install_vSDE.yaml --extra-vars "username=<username_here> password=<pwd_here>"
   - hosts: sde
     remote_user: root
     become: yes
