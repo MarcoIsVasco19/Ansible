@@ -58,9 +58,10 @@
         no_log: true
 
       - name: install sde packages
-        yum:
-          name: sde
-          state: present
+        block:
+          - yum:
+              name: sde
+              state: present
         notify:
         - restart sde
 
