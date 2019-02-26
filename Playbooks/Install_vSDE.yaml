@@ -16,7 +16,7 @@
       - name: install createrepo (for svbootstrap)
         yum:
           name: createrepo
-          state: present      
+          state: present
       - name: install epel
         yum:
           name: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm"
@@ -36,11 +36,11 @@
       - name: install pexpect
         pip:
           name: pexpect
-        become: yes    
+        become: yes
       - name: Download svbootstrap
         yum:
           name: "https://files.support.sandvine.com/public/svbootstrap/svbootstrap.el7.x86_64.rpm"
-          state: latest      
+          state: latest
       - name: install certs/sde repo
         expect:
           command: svrepo
@@ -55,7 +55,7 @@
             'Run': 'y'
         no_log: true
 
-      # Install SDE here        
+      # Install SDE here
       - name: install sde packages
         yum:
           name: sde
