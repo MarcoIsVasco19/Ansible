@@ -62,6 +62,9 @@
           state: present
         notify:
         - restartsde
+      - name: service sde restart
+        command: service sde restart
+        register: output
     handlers:
     - name: restartsde
       command: service sde restart
