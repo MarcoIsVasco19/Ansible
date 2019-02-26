@@ -16,7 +16,7 @@
       - name: install createrepo (for svbootstrap)
         yum:
           name: createrepo
-          state: present      
+          state: present
       - name: install epel
         yum:
           name: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm"
@@ -32,11 +32,11 @@
       - name: install pexpect
         pip:
           name: pexpect
-        become: yes    
+        become: yes
       - name: Download svbootstrap
         yum:
           name: "https://files.support.sandvine.com/public/svbootstrap/svbootstrap.el7.x86_64.rpm"
-          state: latest      
+          state: latest
       - name: install certs/pts repo
         expect:
           command: svrepo
@@ -51,26 +51,19 @@
             'Run': 'y'
         no_log: true
 
-      - name: install svpts packages
-        block:
-          - yum:
-              name: svpts
-              state: present
-        rescue:
-          - debug:
-              msg: "There was an issue installing so lets try install openssl and perl-WWW-curl"
-          - name: Installing perl-WWW-curl
-            yum:
-              name: "http://mirror.centos.org/centos/7/os/x86_64/Packages/perl-WWW-Curl-4.15-13.el7.x86_64.rpm"
-              state: latest
-          - name: Installing openssl-perl due to above failure
-            yum:
-              name: "http://mirror.centos.org/centos/7/os/x86_64/Packages/openssl-perl-1.0.2k-16.el7.x86_64.rpm"
-              state: latest
-      - name: Try install svpts Again! No More errors :)
+      # Install PTS here
+      - name: install pts packages
         yum:
           name: svpts
           state: present
-      # - name: Restart services
-      #   command: service svsde restart
-      #   register: output
+        notify:
+        - restartpts
+      - name: Restart service svpts
+        service:
+          name: svpts
+          state: started
+    handlers:
+    - name: restartpts
+      service:
+        name: svpts
+        state: restarted
