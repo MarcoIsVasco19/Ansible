@@ -22,7 +22,6 @@
           pkg:
           - at
           - bc
-          - compat-readline5
           - gdb
           - glibc
           - ncurses-libs
