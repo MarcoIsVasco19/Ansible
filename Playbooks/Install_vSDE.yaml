@@ -66,10 +66,8 @@
         service:
           name: sde
           state: restarted
-          register: output
     handlers:
     - name: restartsde
       service:
         name: sde
         state: restarted
-        register: output        
