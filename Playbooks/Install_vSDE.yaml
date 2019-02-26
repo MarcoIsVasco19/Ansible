@@ -62,34 +62,14 @@
           state: present
         notify:
         - restartsde
-      - name: service sde restart
-        command: service sde restart
-        register: output
+      - name: Restart service sde
+        service:
+          name: sde
+          state: restarted
+          register: output
     handlers:
     - name: restartsde
-      command: service sde restart
-      register: output        
-
-      # - name: install sde packages
-      #   block:
-      #     - yum:
-      #         name: sde
-      #         state: present
-      #   rescue:
-      #     - debug:
-      #         msg: "There was an issue installing so lets try install openssl and perl-WWW-curl"
-      #     - name: Installing perl-WWW-curl
-      #       yum:
-      #         name: "http://mirror.centos.org/centos/7/os/x86_64/Packages/perl-WWW-Curl-4.15-13.el7.x86_64.rpm"
-      #         state: latest
-      #     - name: Installing openssl-perl due to above failure
-      #       yum:
-      #         name: "http://mirror.centos.org/centos/7/os/x86_64/Packages/openssl-perl-1.0.2k-16.el7.x86_64.rpm"
-      #         state: latest
-      # - name: Try install Sde Again! No More errors :)
-      #   yum:
-      #     name: sde
-      #     state: present
-      # - name: Restart services
-      #   command: service svsde restart
-      #   register: output
+      service:
+        name: sde
+        state: restarted
+        register: output        
