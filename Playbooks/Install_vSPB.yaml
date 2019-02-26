@@ -95,6 +95,7 @@
         command: chkconfig postgresql-9.3 on
         register: output
 
+      # Restart SPB service in case:
       - name: Restart SPB services
         service:
           name: "{{ items }}"
