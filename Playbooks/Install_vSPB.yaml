@@ -84,30 +84,30 @@
             'Run': 'y'
         no_log: false
 
-    #   # Install SPB here
-    #   - name: install spb packages
-    #     yum:
-    #       name: svspb
-    #       state: present
-    #     notify:
-    #     - restartspb
-    #   - name: Starting PostgreSQL on Boot
-    #     command: chkconfig postgresql-9.3 on
-    #     register: output
-    #
-    #   # Restart SPB service in case:
-    #   - name: Restart SPB services
-    #     service:
-    #       name: "{{ items }}"
-    #       state: restarted
-    #     vars:
-    #       items:
-    #       - scdpd
-    #       - msd
-    #       - appsrv
-    #       - msgsrv
-    #       - postgresql-9.3
-    # handlers:
-    # - name: restartspb
-    #   command: svreload
-    #   register: output
+      # Install SPB here
+      - name: install spb packages
+        yum:
+          name: svspb
+          state: present
+        notify:
+        - restartspb
+      - name: Starting PostgreSQL on Boot
+        command: chkconfig postgresql-9.3 on
+        register: output
+
+      # Restart SPB service in case:
+      - name: Restart SPB services
+        service:
+          name: "{{ items }}"
+          state: restarted
+        vars:
+          items:
+          - scdpd
+          - msd
+          - appsrv
+          - msgsrv
+          - postgresql-9.3
+    handlers:
+    - name: restartspb
+      command: svreload
+      register: output
