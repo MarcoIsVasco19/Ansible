@@ -74,7 +74,7 @@
               url: http://mirror.centos.org/centos/7/os/x86_64/Packages/perl-WWW-Curl-4.15-13.el7.x86_64.rpm
               dest: /opt/perl-WWW-Curl-4.15-13.el7.x86_64.rpm
           - name: Install the package perl-WWW-curl
-            shell: rpm -Uvh perl-WWW-Curl-4.15-13.el7.x86_64.rpm
+            shell: rpm -Fvh perl-WWW-Curl-4.15-13.el7.x86_64.rpm
             args:
               chdir: /opt/
           - name: Installing openssl-perl due to above failure
@@ -82,7 +82,7 @@
               url: http://mirror.centos.org/centos/7/os/x86_64/Packages/openssl-perl-1.0.2k-16.el7.x86_64.rpm
               dest: /opt/openssl-perl-1.0.2k-16.el7.x86_64.rpm
           - name: Install the package openssl-perl
-            shell: rpm -Uvh openssl-perl-1.0.2k-16.el7.x86_64.rpm
+            shell: rpm -Fvh openssl-perl-1.0.2k-16.el7.x86_64.rpm
             args:
               chdir: /opt/
       - name: Try install Sde Again! No More errors :)
