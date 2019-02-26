@@ -1,6 +1,6 @@
 ---
 # Usage --> ansible-playbook Install_vPTS.yaml --extra-vars "username=<username_here> password=<pwd_here>"
-  - hosts: svpts
+  - hosts: pts
     remote_user: root
     become: yes
     tasks:
