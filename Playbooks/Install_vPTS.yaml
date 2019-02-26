@@ -50,7 +50,7 @@
             'Enter quit/1-12:': '5'
             'Enter quit/1-1:': '1'
             "Run 'yum clean all' now?": 'y'
-        no_log: true
+        no_log: false
 
       # Install PTS here
       - name: install pts packages
