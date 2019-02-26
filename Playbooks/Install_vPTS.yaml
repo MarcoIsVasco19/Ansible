@@ -46,9 +46,10 @@
             'Email Address:': "{{ username }}"
             'Password     :': "{{ password }}"
             'Enter quit/1-15:': '8'
-            'Enter quit/1-3:': '3'
-            'Enter quit/1-1': '1'
-            'Run': 'y'
+            'Enter quit/1-3:': '2'
+            'Enter quit/1-12:': '5'
+            'Enter quit/1-1:': '1'
+            "Run 'yum clean all' now?": 'y'
         no_log: true
 
       # Install PTS here
