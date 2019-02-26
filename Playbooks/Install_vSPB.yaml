@@ -14,6 +14,7 @@
       #     name: '*'
       #     state: latest
       - name: Install SPB Base Dependencies
+        ignore_errors: yes
         yum:
           name: "{{ pkg }}"
           state: latest
