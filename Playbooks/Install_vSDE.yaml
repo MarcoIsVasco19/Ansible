@@ -73,25 +73,17 @@
           - debug:
               msg: "There was an issue installing so lets try install openssl and perl-WWW-curl"
           - name: Installing perl-WWW-curl
-            get_url:
-              url: http://mirror.centos.org/centos/7/os/x86_64/Packages/perl-WWW-Curl-4.15-13.el7.x86_64.rpm
-              dest: /opt/perl-WWW-Curl-4.15-13.el7.x86_64.rpm
-          - name: Install the package perl-WWW-curl
-            shell: rpm -Fvh perl-WWW-Curl-4.15-13.el7.x86_64.rpm
-            args:
-              chdir: /opt/
+            yum:
+              name: "http://mirror.centos.org/centos/7/os/x86_64/Packages/perl-WWW-Curl-4.15-13.el7.x86_64.rpm"
+              state: latest
           - name: Installing openssl-perl due to above failure
-            get_url:
-              url: http://mirror.centos.org/centos/7/os/x86_64/Packages/openssl-perl-1.0.2k-16.el7.x86_64.rpm
-              dest: /opt/openssl-perl-1.0.2k-16.el7.x86_64.rpm
-          - name: Install the package openssl-perl
-            shell: rpm -Fvh openssl-perl-1.0.2k-16.el7.x86_64.rpm
-            args:
-              chdir: /opt/
+            yum:
+              name: "http://mirror.centos.org/centos/7/os/x86_64/Packages/openssl-perl-1.0.2k-16.el7.x86_64.rpm"
+              state: latest
       - name: Try install Sde Again! No More errors :)
         yum:
           name: sde
           state: present
       - name: Restart services
-        command: service sde restart
+        command: service svsde restart
         register: output
