@@ -111,6 +111,9 @@
           - 'appsrv'
           - 'msgsrv'
           - 'postgresql-9.3'
+      - name: svreload for good measure
+        command: svreload
+        register: output
     handlers:
     - name: restartspb
       command: svreload
