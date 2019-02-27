@@ -95,18 +95,18 @@
         command: chkconfig postgresql-9.3 on
         register: output
 
-      # Restart SPB service in case:
-      - name: Restart SPB services
-        service:
-          name: "{{ items }}"
-          state: restarted
-        vars:
-          items:
-          - scdpd
-          - msd
-          - appsrv
-          - msgsrv
-          - postgresql-9.3
+      # Use loop to Restart SPB services
+      - name: Start SPB services
+        systemd:
+          name: "{{ item }}"
+          state: started
+        with_items:
+          - 'servicelauncher'
+          - 'scdpd'
+          - 'msd'
+          - 'appsrv'
+          - 'msgsrv'
+          - 'postgresql-9.3'
     handlers:
     - name: restartspb
       command: svreload
