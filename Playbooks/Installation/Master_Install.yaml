@@ -1,0 +1,5 @@
+---
+# Usage --> ansible-playbook Master_Install.yaml --extra-vars "username=<username_here> password=<pwd_here>"
+  - import_playbook: Install_vPTS.yaml
+  - import_playbook: Install_vSDE.yaml
+  - import_playbook: Install_vSPB.yaml
