@@ -8,7 +8,7 @@
         selinux:
           state: disabled
 
-    #First Update Yum and install dependencies for what we need (disabled for now)
+    #First Update Yum and install dependencies for what we need
       # - name: upgrade all packages
       #   yum:
       #     name: '*'
