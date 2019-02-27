@@ -63,10 +63,10 @@
           state: present
         notify:
         - restartpts
-      - name: Restart service svpts
-        service:
-          name: svpts
-          state: started
+      # - name: Restart service svpts
+      #   service:
+      #     name: svpts
+      #     state: started
     handlers:
     - name: restartpts
       service:

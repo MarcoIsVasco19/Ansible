@@ -66,10 +66,10 @@
           state: present
         notify:
         - restartsde
-      - name: Restart service sde
-        service:
-          name: sde
-          state: restarted
+      # - name: Restart service sde
+      #   service:
+      #     name: sde
+      #     state: restarted
     handlers:
     - name: restartsde
       service:
