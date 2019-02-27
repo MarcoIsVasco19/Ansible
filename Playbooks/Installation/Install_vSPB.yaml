@@ -111,6 +111,7 @@
           - 'appsrv'
           - 'msgsrv'
           - 'postgresql-9.3'
+          - 'configuration'
       - name: svreload for good measure
         command: svreload
         register: output
