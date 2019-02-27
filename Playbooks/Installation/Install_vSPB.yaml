@@ -105,6 +105,7 @@
           state: started
         with_items:
           - 'servicelauncher'
+          - 'svprocmon'
           - 'scdpd'
           - 'msd'
           - 'appsrv'
