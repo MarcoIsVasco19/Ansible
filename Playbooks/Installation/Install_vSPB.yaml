@@ -9,10 +9,10 @@
           state: disabled
 
     #First Update Yum and install dependencies for what we need
-      # - name: upgrade all packages
-      #   yum:
-      #     name: '*'
-      #     state: latest
+      - name: upgrade all packages
+        yum:
+          name: '*'
+          state: latest
       - name: Install SPB Base Dependencies
         ignore_errors: yes
         yum:
@@ -94,7 +94,6 @@
       - name: Starting PostgreSQL on Boot
         command: chkconfig postgresql-9.3 on
         register: output
-
       # Use loop to Restart SPB services
       - name: Start SPB services
         systemd:

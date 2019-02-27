@@ -9,10 +9,10 @@
           state: disabled
 
     #First Update Yum and install dependencies for what we need (disabled for now)
-      # - name: upgrade all packages
-      #   yum:
-      #     name: '*'
-      #     state: latest
+      - name: upgrade all packages
+        yum:
+          name: '*'
+          state: latest
       - name: install createrepo (for svbootstrap)
         yum:
           name: createrepo
