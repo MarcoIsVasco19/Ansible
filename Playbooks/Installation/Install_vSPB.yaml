@@ -105,13 +105,16 @@
           state: started
         with_items:
           - 'servicelauncher'
-          - 'svprocmon'
           - 'scdpd'
           - 'msd'
           - 'appsrv'
           - 'msgsrv'
           - 'postgresql-9.3'
+          - 'svprocmon'          
           - 'configuration'
+          - 'nginx'
+          - 'svspbmd'
+          - 'svpamd'
       - name: svreload for good measure
         command: svreload
         register: output
