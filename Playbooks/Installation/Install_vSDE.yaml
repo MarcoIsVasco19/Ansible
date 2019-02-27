@@ -53,9 +53,9 @@
             'Download and install now? [n]|y:': 'y'
             'Email Address:': "{{ username }}"
             'Password     :': "{{ password }}"
-            'Enter quit/1-15:': '10'
-            'Enter quit/1-3:': '3'
-            'Enter quit/1-1': '1'
+            '\r\n\r\nEnter quit/1-15:': '10'
+            '\r\n\r\nEnter quit/1-3:': '3'
+            '\r\n\r\nEnter quit/1-1': '1'
             'Run': 'y'
         no_log: true
 
