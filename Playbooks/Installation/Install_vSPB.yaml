@@ -9,7 +9,11 @@
           state: disabled
 
     #First Update Yum and install dependencies for what we need
-      - name: upgrade all packages
+      - name: Install the 'Base' package group
+        yum:
+          name: "@Base"
+          state: present
+      - name: Upgrade all packages
         yum:
           name: '*'
           state: latest
@@ -45,31 +49,31 @@
           - postgresql93-server
           - postgresql93-contrib
           - postgresql93-odbc
-      - name: install createrepo (for svbootstrap)
+      - name: Install createrepo (for svbootstrap)
         yum:
           name: createrepo
           state: present
-      - name: install epel
+      - name: Install epel
         yum:
           name: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm"
           state: latest
-      - name: install wget
+      - name: Install wget
         yum:
           name: wget
           state: present
-      - name: install pip
+      - name: Install pip
         yum:
           name: python-pip
           state: present
-      - name: install pexpect
+      - name: Install pexpect
         pip:
           name: pexpect
         become: yes
-      - name: Download svbootstrap
+      - name: Download and Install svrepo/svbootstrap
         yum:
           name: "https://files.support.sandvine.com/public/svbootstrap/svbootstrap.el7.x86_64.rpm"
           state: latest
-      - name: install certs/spb repo
+      - name: Install certs/spb repo
         expect:
           command: svrepo
           echo: yes
@@ -85,7 +89,7 @@
         no_log: true
 
       # Install SPB here
-      - name: install spb packages
+      - name: Install spb packages
         yum:
           name: svspb
           state: present
