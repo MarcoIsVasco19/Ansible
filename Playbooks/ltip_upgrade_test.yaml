@@ -1,0 +1,6 @@
+---
+- hosts: all
+roles:
+  - {role: download-repo}
+  - {role: upgrade-ltip}
+  - {role: restart services}
