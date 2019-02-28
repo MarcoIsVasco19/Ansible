@@ -110,11 +110,12 @@
           - 'appsrv'
           - 'msgsrv'
           - 'postgresql-9.3'
-          - 'svprocmon'          
+          - 'svprocmon'
           - 'configuration'
           - 'nginx'
           - 'svspbmd'
           - 'svpamd'
+          - 'consul'
       - name: svreload for good measure
         command: svreload
         register: output
