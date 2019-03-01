@@ -1,7 +1,10 @@
 ---
-  - hosts: all
+  - hosts: {{ myhosts }}
     remote_user: root
     become: yes
+    with_items:
+      - 'pts'
+      - 'spb'
     tasks:
       - name: Download and Install svrepo/svbootstrap
         yum:
@@ -22,3 +25,23 @@
             '\r\n\r\nEnter quit/1-2:': '2'
             "Run 'yum clean all' now?": 'y'
         no_log: false
+
+# Upgrade virtual PTS devices
+    tasks:
+      - name: Upgrade vPTS LTIP
+        yum:
+          name: svprotocols
+          state: latest
+          when: hosts == 'pts'
+
+# Upgrade SPB devices
+    tasks:
+      - name: Upgrade vSPB packages
+        yum:
+          name: "{{ packages }}"
+          state: latest
+        vars:
+          packages:
+          - svprotocols-version
+          - svprotocols-nds
+          when: hosts == 'spb'
