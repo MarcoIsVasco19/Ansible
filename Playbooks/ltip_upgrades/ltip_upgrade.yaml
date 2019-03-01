@@ -2,6 +2,7 @@
   - hosts: pts:spb
     remote_user: root
     become: yes
+    tasks:
       - name: Download and Install svrepo/svbootstrap
         yum:
           name: "https://files.support.sandvine.com/public/svbootstrap/svbootstrap.el7.x86_64.rpm"
