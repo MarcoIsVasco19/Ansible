@@ -30,7 +30,7 @@
         yum:
           name: svprotocols
           state: latest
-          when: hosts == 'pts'
+          when: ansible_facts['ansible_fqdn'] == "labpts.t6flab.com"
 
 # Upgrade SPB devices
     tasks:
@@ -42,4 +42,4 @@
           packages:
           - svprotocols-version
           - svprotocols-nds
-          when: hosts == 'spb'
+          when: ansible_facts['ansible_fqdn'] == "labspb.t6flab.com"
