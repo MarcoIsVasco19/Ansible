@@ -30,6 +30,9 @@
         yum:
           name: svprotocols
           state: latest
+      - name: svreload for good measure
+        command: svreload
+        register: output
 
 # Upgrade SPB devices
       - name: Upgrade vSPB LTIP
@@ -41,3 +44,6 @@
           packages:
           - svprotocols-version
           - svprotocols-nds
+      - name: svreload for good measure
+        command: svreload
+        register: output
