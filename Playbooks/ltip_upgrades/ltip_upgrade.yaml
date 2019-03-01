@@ -26,15 +26,14 @@
 
 # Upgrade virtual PTS devices
       - name: Upgrade vPTS LTIP
-          when: ansible_facts['ansible_fqdn'] == "labpts.t6flab.com"      
+        when: ansible_facts['ansible_fqdn'] == "labpts.t6flab.com"
         yum:
           name: svprotocols
           state: latest
-          when: ansible_facts['ansible_fqdn'] == "labpts.t6flab.com"
 
 # Upgrade SPB devices
       - name: Upgrade vSPB LTIP
-          when: ansible_facts['ansible_fqdn'] == "labspb.t6flab.com"
+        when: ansible_facts['ansible_fqdn'] == "labspb.t6flab.com"
         yum:
           name: "{{ packages }}"
           state: latest
