@@ -1,5 +1,5 @@
 ---
-  - hosts: "{{ myhosts }}"
+  - hosts: pts spb
     remote_user: root
     become: yes
     with_items:
