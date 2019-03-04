@@ -1,0 +1,23 @@
+---
+# tasks for install dependencies for vPTS
+
+- name: Install createrepo (for svbootstrap)
+yum:
+  name: createrepo
+  state: present
+- name: Install epel
+yum:
+  name: {{ epel_url }}
+  state: latest
+- name: Install wget
+yum:
+  name: wget
+  state: present
+- name: Install pip
+yum:
+  name: python-pip
+  state: present
+- name: Install pexpect
+pip:
+  name: pexpect
+become: yes

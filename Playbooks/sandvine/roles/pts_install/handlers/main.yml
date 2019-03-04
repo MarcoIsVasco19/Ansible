@@ -1,0 +1,5 @@
+---
+# handlers file for pts_install
+- name: svreload
+  command: svreload
+  register: output

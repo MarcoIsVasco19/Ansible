@@ -62,9 +62,8 @@
           name: svpts
           state: present
         notify:
-        - restartpts
+        - svreload
     handlers:
-    - name: restartpts
-      service:
-        name: svpts
-        state: restarted
+    - name: svreload
+      command: svreload
+      register: output

@@ -1,0 +1,5 @@
+---
+# Install the svbootstrap utility
+- yum:
+    name: {{ svrepo_url }}
+    state: latest

@@ -1,0 +1,9 @@
+---
+# tasks file for pts_install
+
+- name: Import Tasks in sequential order
+  import_tasks: update.yaml
+  import_tasks: dependancies.yaml
+  import_tasks: svbootstrap.yml
+  import_tasks: pts_repo.yml
+  import_tasks: install_svpts.yml

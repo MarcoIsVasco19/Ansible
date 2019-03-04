@@ -1,0 +1,16 @@
+---
+# Create repo for vPTS install
+- name: Install certs/pts repo
+  expect:
+    command: svrepo
+    echo: yes
+    responses:
+      'Download and install now? [n]|y:': 'y'
+      'Email Address:': "{{ username }}"
+      'Password     :': "{{ password }}"
+      '\r\n\r\nEnter quit/1-15:': '8'
+      '\r\n\r\nEnter quit/1-3:': '2'
+      '\r\n\r\nEnter quit/1-12:': '5'
+      '\r\n\r\nEnter quit/1-1:': '1'
+      "Run 'yum clean all' now?": 'y'
+  no_log: false
