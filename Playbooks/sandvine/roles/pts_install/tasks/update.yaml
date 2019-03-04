@@ -1,6 +1,10 @@
 ---
 # Group Install Base packages
- - yum: name: "@Base" state: present
+ - yum:
+     name: "@Base"
+     state: present
 
 # Update all packages
- - yum: name: '*' state: latest
+ - yum:
+     name: '*'
+     state: latest
