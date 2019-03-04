@@ -5,10 +5,9 @@
   remote_user: root
   tasks:
     - name: Copy file to client
-      synchronize:
+      copy:
         src: /$HOME/Protocols_19.02.02.tar
         dest: /d2/tmp/
-        checksum: no
         owner: root
         group: sv_service
         mode: 0644
