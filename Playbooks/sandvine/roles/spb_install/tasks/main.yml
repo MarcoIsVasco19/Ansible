@@ -1,11 +1,9 @@
 ---
 # tasks file for spb_install
-
-- name: Import Tasks in sequential order
-  import_tasks: update.yaml
-  import_tasks: dependancies.yaml
-  import_tasks: pgsql_install.yml
-  import_tasks: svbootstrap.yml
-  import_tasks: spb_repo.yml
-  import_tasks: install_svspb.yml
-  import_tasks: start_services.yml
+- import_tasks: update.yaml
+- import_tasks: dependancies.yaml
+- import_tasks: pgsql_install.yml
+- import_tasks: svbootstrap.yml
+- import_tasks: spb_repo.yml
+- import_tasks: install_svspb.yml
+- import_tasks: start_services.yml

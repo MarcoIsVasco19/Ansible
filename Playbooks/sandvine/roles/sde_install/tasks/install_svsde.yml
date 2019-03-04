@@ -1,6 +1,7 @@
 ---
 # Install sde package
-- yum:
+- name: Install sde packages
+  yum:
     name: sde
     state: present
   notify:

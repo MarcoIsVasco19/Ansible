@@ -28,7 +28,7 @@
     state: present
 - name: Install epel
   yum:
-    name: {{ epel_url }}
+    name: "{{ epel_url }}"
     state: latest
 - name: Install wget
   yum:
