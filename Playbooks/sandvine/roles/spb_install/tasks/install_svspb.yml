@@ -1,0 +1,10 @@
+---
+- name: Install spb packages
+  yum:
+    name: svspb
+    state: present
+  notify:
+  - svreload
+- name: Starting PostgreSQL on Boot
+  command: chkconfig postgresql-9.3 on
+  register: output

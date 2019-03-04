@@ -94,7 +94,7 @@
           name: svspb
           state: present
         notify:
-        - restartspb
+        - svreload
       - name: Starting PostgreSQL on Boot
         command: chkconfig postgresql-9.3 on
         register: output
@@ -120,6 +120,6 @@
         command: svreload
         register: output
     handlers:
-    - name: restartspb
+    - name: svreload
       command: svreload
       register: output

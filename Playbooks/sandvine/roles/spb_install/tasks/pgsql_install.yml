@@ -1,0 +1,15 @@
+---
+# Download and install PostgreSQL-9.3
+- name: Install PostgreSQL Repo
+  yum:
+    name: {{ pgdg_url }}
+    state: latest
+- name: Install PostgreSQL 9.3 server packages
+  yum:
+    name: "{{ packages }}"
+    state: latest
+  vars:
+    packages:
+    - postgresql93-server
+    - postgresql93-contrib
+    - postgresql93-odbc
