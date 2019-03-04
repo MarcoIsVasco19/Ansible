@@ -1,0 +1,32 @@
+---
+- hosts: pts:sde:spb
+  remote_user: root
+  become: yes
+  roles:
+    - role: pts_install
+      vars:
+        svrepo_username: {{ username }}
+        svrepo_password: {{ password }}
+    - role: sde_install
+      vars:
+        svrepo_username: {{ username }}
+        svrepo_password: {{ password }}
+    - role: spb_install
+      vars:
+        svrepo_username: {{ username }}
+        svrepo_password: {{ password }}
+  # tasks:
+  # - debug:
+  #     msg: "Importing PTS role"
+  # - import_role:
+  #     name: pts_install
+  #
+  # - debug:
+  #     msg: "Importing SDE role"
+  # - import_role:
+  #     name: sde_install
+  #
+  # - debug:
+  #     msg: "Importing SPB role"
+  # - import_role:
+  #     name: spb_install

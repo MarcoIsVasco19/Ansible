@@ -6,8 +6,8 @@
     echo: yes
     responses:
       'Download and install now? [n]|y:': 'y'
-      'Email Address:': "{{ username }}"
-      'Password     :': "{{ password }}"
+      'Email Address:': "{{ svrepo_username }}"
+      'Password     :': "{{ svrepo_password }}"
       '\r\n\r\nEnter quit/1-15:': '8'
       '\r\n\r\nEnter quit/1-3:': '2'
       '\r\n\r\nEnter quit/1-12:': '5'
