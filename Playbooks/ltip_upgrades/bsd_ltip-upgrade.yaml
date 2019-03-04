@@ -6,17 +6,17 @@
     file_name: Protocols_19.02.02.tar
   remote_user: root
   tasks:
-  - name: Copy file to client
-    synchronize:
-      src: "{{ source }}"
-      dest: "{{ dest }}"
-      checksum: no
-      owner: root
-      group: sv_service
-      mode: 0644
-   - name: Install the LTIP
-     command: svupdate --release-image ""{{ dest }}""{{ file_name }}"
-     register: output
-   - name: Reload policy
-     command: svreload
-     register: output
+    - name: Copy file to client
+      synchronize:
+        src: "{{ source }}"
+        dest: "{{ dest }}"
+        checksum: no
+        owner: root
+        group: sv_service
+        mode: 0644
+    - name: Install the LTIP
+      command: svupdate --release-image ""{{ dest }}""{{ file_name }}"
+      register: output
+    - name: Reload policy
+      command: svreload
+      register: output
