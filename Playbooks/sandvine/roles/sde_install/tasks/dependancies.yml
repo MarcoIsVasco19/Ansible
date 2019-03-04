@@ -1,5 +1,5 @@
 ---
-# tasks for install dependencies for vPTS
+# tasks for install dependencies for vSDE
 - name: Disable selinux
   selinux:
     state: disabled
@@ -14,6 +14,10 @@
 - name: Install wget
   yum:
     name: wget
+    state: present
+- name: Install nginx
+  yum:
+    name: nginx
     state: present
 - name: Install pip
   yum:

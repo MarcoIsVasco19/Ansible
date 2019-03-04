@@ -1,0 +1,7 @@
+---
+# Install sde package
+- yum:
+    name: sde
+    state: present
+  notify:
+  - svreload

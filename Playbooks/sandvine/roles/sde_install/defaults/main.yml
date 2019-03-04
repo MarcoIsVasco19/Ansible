@@ -1,0 +1,12 @@
+---
+# defaults file for sde_install
+
+# URL for epel repo
+epel_url: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm"
+
+# URL for svbootstrap
+svrepo_url: "https://files.support.sandvine.com/public/svbootstrap/svbootstrap.el7.x86_64.rpm"
+
+# The Username and Password for the svrepo service
+svrepo_username: <insert username here>
+svrepo_password: <insert password here>

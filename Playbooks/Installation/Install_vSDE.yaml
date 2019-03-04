@@ -65,9 +65,8 @@
           name: sde
           state: present
         notify:
-        - restartsde
+        - svreload
     handlers:
-    - name: restartsde
-      service:
-        name: sde
-        state: restarted
+    - name: svreload
+      command: svreload
+      register: output

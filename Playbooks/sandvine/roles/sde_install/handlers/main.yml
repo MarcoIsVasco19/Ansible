@@ -1,0 +1,5 @@
+---
+# handlers file for sde_install
+- name: svreload
+  command: svreload
+  register: output

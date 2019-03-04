@@ -1,0 +1,8 @@
+---
+# tasks file for sde_install
+- name: Import Tasks in sequential order
+  import_tasks: update.yml
+  import_tasks: dependancies.yml
+  import_tasks: svbootstrap.yml
+  import_tasks: sde_repo.yml
+  import_tasks: install_svsde.yml
