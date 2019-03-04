@@ -1,32 +1,5 @@
 ---
-- hosts: pts:sde:spb
-  remote_user: root
-  become: yes
-  roles:
-    - role: pts_install
-      vars:
-        svrepo_username: {{ username }}
-        svrepo_password: {{ password }}
-    - role: sde_install
-      vars:
-        svrepo_username: {{ username }}
-        svrepo_password: {{ password }}
-    - role: spb_install
-      vars:
-        svrepo_username: {{ username }}
-        svrepo_password: {{ password }}
-  # tasks:
-  # - debug:
-  #     msg: "Importing PTS role"
-  # - import_role:
-  #     name: pts_install
-  #
-  # - debug:
-  #     msg: "Importing SDE role"
-  # - import_role:
-  #     name: sde_install
-  #
-  # - debug:
-  #     msg: "Importing SPB role"
-  # - import_role:
-  #     name: spb_install
+# Usage --> ansible-playbook install_sandvine.yaml --extra-vars "username=<username_here> password=<pwd_here>"
+  - import_playbook: run_pts-role.yaml
+  - import_playbook: run_sde-role.yaml
+  - import_playbook: run_spb-role.yaml

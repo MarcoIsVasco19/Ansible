@@ -1,0 +1,9 @@
+---
+- hosts: sde
+  remote_user: root
+  become: yes
+  roles:
+    - role: sde_install
+      vars:
+        svrepo_username: {{ username }}
+        svrepo_password: {{ password }}

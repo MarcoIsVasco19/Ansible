@@ -1,0 +1,9 @@
+---
+- hosts: pts
+  remote_user: root
+  become: yes
+  roles:
+    - role: pts_install
+      vars:
+        svrepo_username: {{ username }}
+        svrepo_password: {{ password }}

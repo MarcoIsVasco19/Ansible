@@ -1,0 +1,9 @@
+---
+- hosts: spb
+  remote_user: root
+  become: yes
+  roles:
+    - role: spb_install
+      vars:
+        svrepo_username: {{ username }}
+        svrepo_password: {{ password }}
