@@ -1,17 +1,7 @@
 ---
 # tasks file for pts_install
-
-- import_tasks:
-    name: "{{ item }}"
-  with_items:
-    - update.yaml
-    - dependancies.yaml
-    - svbootstrap.yml
-    - pts_repo.yml
-    - install_svpts.yml
-
-# import_tasks: update.yaml
-# import_tasks: dependancies.yaml
-# import_tasks: svbootstrap.yml
-# import_tasks: pts_repo.yml
-# import_tasks: install_svpts.yml
+import_tasks: update.yaml
+import_tasks: dependancies.yaml
+import_tasks: svbootstrap.yml
+import_tasks: pts_repo.yml
+import_tasks: install_svpts.yml
