@@ -1,6 +1,7 @@
 ---
 # Install svpts package
-- yum:
+- name: Install pts packages
+  yum:
     name: svpts
     state: present
   notify:
