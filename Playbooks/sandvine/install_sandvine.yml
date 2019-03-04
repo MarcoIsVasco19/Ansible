@@ -1,5 +1,5 @@
 ---
 # Usage --> ansible-playbook install_sandvine.yaml --extra-vars "username=<username_here> password=<pwd_here>"
-  - import_playbook: run_pts-role.yaml
-  - import_playbook: run_sde-role.yaml
-  - import_playbook: run_spb-role.yaml
+  - import_playbook: run_pts-role.yml
+  - import_playbook: run_sde-role.yml
+  - import_playbook: run_spb-role.yml
