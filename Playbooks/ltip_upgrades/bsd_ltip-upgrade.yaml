@@ -1,21 +1,19 @@
 ---
 - hosts : physicalpts
   vars:
-    source: /$HOME/Protocols_19.02.02.tar
-    dest: /d2/tmp/
     file_name: Protocols_19.02.02.tar
   remote_user: root
   tasks:
     - name: Copy file to client
       synchronize:
-        src: "{{ source }}"
-        dest: "{{ dest }}"
+        src: /$HOME/Protocols_19.02.02.tar
+        dest: /d2/tmp/
         checksum: no
         owner: root
         group: sv_service
         mode: 0644
     - name: Install the LTIP
-      command: svupdate --release-image {{ dest }}{{ file_name }}
+      command: svupdate --release-image {{ file_name }}
       register: output
     - name: Reload policy
       command: svreload
