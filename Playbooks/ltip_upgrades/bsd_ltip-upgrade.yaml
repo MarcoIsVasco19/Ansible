@@ -14,9 +14,9 @@
       owner: root
       group: sv_service
       mode: 0644
-  - name: Install the LTIP
-    command: svupdate --release-image ""{{ dest }}""{{ file_name }}"
-    register: output
-  - name: Reload policy
-    command: svreload
-    register: output
+   - name: Install the LTIP
+     command: svupdate --release-image ""{{ dest }}""{{ file_name }}"
+     register: output
+   - name: Reload policy
+     command: svreload
+     register: output
